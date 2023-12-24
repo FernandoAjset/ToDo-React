@@ -1,11 +1,17 @@
+import { socialMediaData } from "./constants/social_media_data";
+
 function Footer() {
   return (
-    <div className="px-2 my-4 col">
-      <footer className="card d-flex flex-row justify-content-between p-4">
+      <footer className="footer card d-flex flex-block flex-sm-row justify-content-between p-4 mb-3 mt-4">
         <h6>© 2023 Created by Edgar Fernando Ajset</h6>
-        <ul className="nav justify-content-end list-unstyled d-flex">
+        <ul className="nav justify-content-center justify-content-sm-end list-unstyled d-flex mt-sm-0 mt-2">
           <li className="ms-3">
-            <a className="text-body-secondary" href="/">
+            <a
+              className="text-body-secondary"
+              rel="noreferrer"
+              target="_blank"
+              href={socialMediaData.linkedin}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -19,7 +25,12 @@ function Footer() {
             </a>
           </li>
           <li className="ms-3">
-            <a className="text-body-secondary" href="/">
+            <a
+              className="text-body-secondary"
+              rel="noreferrer"
+              target="_blank"
+              href={socialMediaData.github}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -33,7 +44,7 @@ function Footer() {
             </a>
           </li>
           <li className="ms-3">
-            <a href="/">
+            <a rel="noreferrer" target="_blank" href={socialMediaData.instagram}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -48,7 +59,6 @@ function Footer() {
           </li>
         </ul>
       </footer>
-    </div>
   );
 }
 

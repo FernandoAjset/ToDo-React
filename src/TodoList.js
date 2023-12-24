@@ -3,7 +3,7 @@ import React from "react";
 
 function TodoList({children}){
     return (
-        <ul>
+        <ul className="list-group">
             {children}
         </ul>
     );
