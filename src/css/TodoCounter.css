@@ -6,3 +6,11 @@
   margin: 0;
   padding: 48px;
 }
+
+.progress-bar{
+  background-color:#5BAC34
+}
+
+.icon {
+  margin-right: 10px;
+}

@@ -1,11 +1,15 @@
 import React from "react";
-
-function TodoSearch(){
-    return (
-        <input 
-        className="form-control mb-3"
-        placeholder="Ingrese el nombre de la tarea"/>
-    );
+import './css/App.css';
+// Use the debounced function in the input
+function TodoSearch({ searchValue, onSearchTodos }) {
+  return (
+    <input
+      className="mb-5 search-bar"
+      value={searchValue}
+      placeholder="Ingrese el nombre de la tarea"
+      onChange={onSearchTodos}
+    />
+  );
 }
+export { TodoSearch };
 
-export {TodoSearch};

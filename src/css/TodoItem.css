@@ -1,0 +1,14 @@
+.btn-custom-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+li{
+    list-style-type: none;
+    background-color: #272727 !important;
+    color: white !important;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./TodoCounter.css";
+import "./css/TodoCounter.css";
 
 function TodoCounter({ total, completed }) {
   return (
@@ -14,7 +14,7 @@ function TodoCounter({ total, completed }) {
               ? { width: "0%" }
               : { width: `${(completed / total) * 100}%` }
           }
-          className="progress-bar progress-bar-striped bg-success"
+          className="progress-bar progress-bar-striped"
           role="progressbar"
           aria-valuenow="10"
           aria-valuemin="0"
