@@ -8,10 +8,12 @@ import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
 import { fakeTodos } from "./constants/fake_todo_data";
 import "./css/App.css";
+import { useLocalStorage } from "./hooks/local-storage-hook";
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, setTodos] = React.useState([]);
+  const [todos, saveTodos] = useLocalStorage("TODOS_V1", fakeTodos);
+
   const [searchedTodos, setSearchedTodos] = React.useState([]);
 
   // Sección de estados derivados
@@ -53,24 +55,6 @@ function App() {
     const newTodos = [...todos.filter((todo) => todo.text !== text)];
     saveTodos(newTodos);
   };
-
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos ?? []);
-    localStorage.setItem("TODOS_V1", stringifiedTodos);
-    setTodos(newTodos);
-  };
-
-  useEffect(() => {
-    // Obtener 'TODOS_V1' del localStorage, si no existe, se asigna 'fakeTodos'
-    const storedTodos = localStorage.getItem("TODOS_V1");
-    const parsedTodos = JSON.parse(storedTodos ?? []);
-    if (parsedTodos && parsedTodos.length > 0) {
-      setTodos(parsedTodos);
-    } else {
-      setTodos(fakeTodos);
-      localStorage.setItem("TODOS_V1", JSON.stringify(fakeTodos));
-    }
-  }, []); // Este efecto se ejecuta sólo una vez, cuando el componente se monta
 
   useEffect(() => {
     setSearchedTodos(todos);
