@@ -1,5 +1,5 @@
-import { socialMediaData } from "./constants/social_media_data";
-import './css/Footer.css'
+import { socialMediaData } from "../constants/social_media_data";
+import '../css/Footer.css'
 
 function Footer() {
   return (
