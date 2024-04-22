@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/TodoCounter.css";
+import { TodoContext } from "../contexts/TodoContext";
 
-function TodoCounter({ total, completed }) {
+function TodoCounter() {
+  const { completedTodos, totalTodos } = useContext(TodoContext);
+
   return (
     <div className="my-2">
       <h5 className="card-title text-center my-4">
-        Has completado {completed} de {total} ToDo's
+        Has completado {completedTodos} de {totalTodos} ToDo's
       </h5>
       <div className="progress">
         <div
           style={
-            completed === 0
+            completedTodos === 0
               ? { width: "0%" }
-              : { width: `${(completed / total) * 100}%` }
+              : { width: `${(completedTodos / totalTodos) * 100}%` }
           }
           className="progress-bar progress-bar-striped"
           role="progressbar"

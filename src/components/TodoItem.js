@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/TodoItem.css";
 import { CompleteIcon } from "./CompleteIcon";
 import { DeleteIcon } from "./DeleteIcon";
+import { TodoContext } from "../contexts/TodoContext";
 
-function TodoItem(props) {
+function TodoItem({ text, complete }) {
+  const { completeTodo, deleteTodo } = useContext(TodoContext);
+
   return (
     <li className="p-2">
       <div className="input-group d-flex justify-content-between align-items-center">
         <CompleteIcon
-          completed={props.complete}
-          onComplete={() => props.onComplete(props.text)}
+          completed={complete}
+          onComplete={() => completeTodo(text)}
         ></CompleteIcon>
         <span
-          onClick={() => props.onComplete(props.text)}
-          className={`col-8 ${
-            props.complete && "text-decoration-line-through"
-          }`}
+          onClick={() => completeTodo(text)}
+          className={`col-8 ${complete && "text-decoration-line-through"}`}
         >
-          {props.text}
+          {text}
         </span>
-        <DeleteIcon onDelete={() => props.onDelete(props.text)}></DeleteIcon>
+        <DeleteIcon onDelete={() => deleteTodo(text)}></DeleteIcon>
       </div>
     </li>
   );
