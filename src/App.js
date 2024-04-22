@@ -8,6 +8,8 @@ import { TodoSearch } from "./TodoSearch";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 import "./css/App.css";
 import { useLocalStorage } from "./hooks/local-storage-hook";
+import { TodosLoading } from "./components/TodosLoading";
+import {TodosError} from './components/TodosError';
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
@@ -75,31 +77,34 @@ function App() {
           justify-content-between"
           >
             <div className="col-sm-7 col-12 col-card">
-              <h5 className="card-title text-center mb-3">
-                Lista de ToDo's pendientes
-              </h5>
-              <TodoSearch
-                searchValue={searchValue}
-                onSearchTodos={filterTodos}
-              />
-              <TodoList>
-                {loading && <p>Cargando...</p>}
-                {error && <p>Hubo un error!!!</p>}
-
-                {!loading && searchedTodos.length === 0 && (
-                  <p>¡Crea tu primer TODO!</p>
-                )}
-
-                {searchedTodos.map((todo) => (
-                  <TodoItem
-                    key={todo.text}
-                    text={todo.text}
-                    complete={todo.complete}
-                    onComplete={completeTodoFunction}
-                    onDelete={onDeleteTodoFunction}
+              {loading ? <TodosLoading /> : null}
+              {error && <TodosError/>}
+              {!loading & !error ? (
+                <div>
+                  <h5 className="card-title text-center mb-3">
+                    Lista de ToDo's pendientes
+                  </h5>
+                  <TodoSearch
+                    searchValue={searchValue}
+                    onSearchTodos={filterTodos}
                   />
-                ))}
-              </TodoList>
+                  <TodoList className="align-items-center justify-center">
+                    {!loading && searchedTodos.length === 0 && (
+                      <p>¡Crea tu primer TODO!</p>
+                    )}
+
+                    {searchedTodos.map((todo) => (
+                      <TodoItem
+                        key={todo.text}
+                        text={todo.text}
+                        complete={todo.complete}
+                        onComplete={completeTodoFunction}
+                        onDelete={onDeleteTodoFunction}
+                      />
+                    ))}
+                  </TodoList>
+                </div>
+              ) : null}
             </div>
             <div className="col-sm-5 col-12 col-card">
               <TodoCounter completed={completedTodos} total={totalTodos} />
