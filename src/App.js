@@ -1,18 +1,22 @@
 // import './App.css';
 import React, { useEffect, useRef } from "react";
-import { CreateTodoButton } from "./components/CreateTodoButton";
 import { Footer } from "./Footer";
 import { TodoCounter } from "./TodoCounter";
 import { TodoItem } from "./TodoItem";
 import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
-import { fakeTodos } from "./constants/fake_todo_data";
+import { CreateTodoButton } from "./components/CreateTodoButton";
 import "./css/App.css";
 import { useLocalStorage } from "./hooks/local-storage-hook";
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
-  const [todos, saveTodos] = useLocalStorage("TODOS_V1", fakeTodos);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("TODOS_V1", []);
 
   const [searchedTodos, setSearchedTodos] = React.useState([]);
 
@@ -79,6 +83,13 @@ function App() {
                 onSearchTodos={filterTodos}
               />
               <TodoList>
+                {loading && <p>Cargando...</p>}
+                {error && <p>Hubo un error!!!</p>}
+
+                {!loading && searchedTodos.length === 0 && (
+                  <p>¡Crea tu primer TODO!</p>
+                )}
+
                 {searchedTodos.map((todo) => (
                   <TodoItem
                     key={todo.text}
