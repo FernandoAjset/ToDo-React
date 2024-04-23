@@ -1,0 +1,14 @@
+label {
+  color: #7b7f93;
+  font-weight: bold;
+}
+
+h4 {
+  color: #7b7f93;
+}
+
+input,textarea {
+  background-color: #1c1e27 !important;
+  border: none !important;
+  color: white !important;
+}

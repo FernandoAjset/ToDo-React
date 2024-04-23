@@ -71,7 +71,7 @@ function TodoProvider({ children }) {
         setOpenModal,
         addTodo: (text) => {
           const newTodos = [...todos];
-          newTodos.push({
+          newTodos.unshift({
             text,
             complete: false,
           });

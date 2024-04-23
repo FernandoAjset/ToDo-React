@@ -10,7 +10,7 @@ const iconTypes = {
 
 const TodoIcon = ({ type, color, onClick }) => {
   return (
-    <span className={`Icon-container Icon-container-${type}`} onClick={onClick}>
+    <span className={`Icon-container Icon-container-${type??'check'}`} onClick={onClick}>
       {iconTypes[type](color)}
     </span>
   );

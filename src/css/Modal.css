@@ -9,6 +9,8 @@
   overflow: auto;
   align-items: center;
   justify-content: center;
+  /* hacer semi transparente el fondo */
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal.open {
@@ -23,6 +25,8 @@
   border-radius: 20px;
   width: 90%;
   height: 90%;
+  max-width: 500px;
+  max-height: 600px;
   box-sizing: border-box;
   position: relative;
 }
@@ -36,8 +40,8 @@
 
 .Icon-container-delete {
   position: absolute;
-  top: 3%;
-  right: 4%;
+  top: -3%;
+  right: -3%;
 }
 
 @-webkit-keyframes animatetop {

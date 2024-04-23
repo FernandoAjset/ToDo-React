@@ -9,6 +9,7 @@ import { TodosError } from "./components/TodosError";
 import { TodosLoading } from "./components/TodosLoading";
 import { TodoContext } from "./contexts/TodoContext";
 import { Modal } from "./components/Modal";
+import { TodoForm } from "./components/TodoForm";
 
 const AppUI = () => {
   const { loading, error, searchedTodos, searchValue } =
@@ -61,7 +62,7 @@ const AppUI = () => {
         </div>
         {/* Modal para crear ToDo */}
         <Modal>
-          <h1 className="text-white">Agregar todo</h1>
+          <TodoForm />
         </Modal>
         {/* Modal para crear ToDo */}
 

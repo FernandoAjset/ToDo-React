@@ -21,17 +21,30 @@
   color: white;
 }
 
-
-.btn-primary{
-background-color: #1a4cd3;
-border-radius: 15px;
-border-color: #1a4cd3;
-padding-top: 15px;
-padding-bottom: 15px;
+.btn-primary {
+  background-color: #1a4cd3;
+  border-radius: 15px;
+  border-color: #1a4cd3;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.btn-primary:hover{
-background-color: #2851BB;
+.btn-primary:hover {
+  background-color: #2851bb;
+}
+
+.btn-sucess {
+  color: white;
+  background-color: #458627;
+  border-radius: 15px;
+  border-color: #458627;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.btn-sucess:hover {
+  color: white;
+  background-color: #468d26;
 }
 
 .col-card:first-child {

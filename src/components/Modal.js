@@ -8,14 +8,15 @@ const Modal = ({ children }) => {
   const { openModal, setOpenModal } = useContext(TodoContext);
   return ReactDOM.createPortal(
     <div className={`modal ${openModal ? "open" : ""}`}>
-      <div className="modal-content">{children}</div>
-
-      <TodoIcon
-      className="modal-close"
-        type="delete"
-        color="#B3191A"
-        onClick={() => setOpenModal(false)}
-      ></TodoIcon>
+      <div className="modal-content">
+        {children}
+        <TodoIcon
+          className="modal-close"
+          type="delete"
+          color="#B3191A"
+          onClick={() => setOpenModal(false)}
+        ></TodoIcon>
+      </div>
     </div>,
     document.getElementById("modal")
   );
