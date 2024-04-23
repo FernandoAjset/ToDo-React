@@ -51,6 +51,25 @@ function TodoProvider({ children }) {
     }, 500);
   };
 
+  const addTodo = (description) => {
+    if (!description || description.trim() === "") return;
+    // Validar que no exista ya
+    const text = description.trim();
+    if (todos.find((todo) => todo.text === text)) {
+      // Alerta nativa, que ya existe una tarea.
+      alert("Ya hay una tarea con ese nombre");
+
+      return;
+    }
+
+    const newTodos = [...todos];
+    newTodos.unshift({
+      text,
+      complete: false,
+    });
+    saveTodos(newTodos);
+  };
+
   useEffect(() => {
     setSearchedTodos(todos);
   }, [todos]);
@@ -69,14 +88,7 @@ function TodoProvider({ children }) {
         deleteTodo: onDeleteTodoFunction,
         openModal,
         setOpenModal,
-        addTodo: (text) => {
-          const newTodos = [...todos];
-          newTodos.unshift({
-            text,
-            complete: false,
-          });
-          saveTodos(newTodos);
-        },
+        addTodo: addTodo,
       }}
     >
       {children}
