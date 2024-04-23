@@ -11,13 +11,8 @@ import { TodoContext } from "./contexts/TodoContext";
 import { Modal } from "./components/Modal";
 
 const AppUI = () => {
-  const {
-    loading,
-    error,
-    searchedTodos,
-    searchValue,
-    openModal,
-  } = useContext(TodoContext);
+  const { loading, error, searchedTodos, searchValue } =
+    useContext(TodoContext);
 
   return (
     <>
@@ -64,11 +59,12 @@ const AppUI = () => {
             </div>
           </div>
         </div>
-        {openModal && (
-          <Modal>
-            <h1 className="text-white">Agregar todo</h1>
-          </Modal>
-        )}
+        {/* Modal para crear ToDo */}
+        <Modal>
+          <h1 className="text-white">Agregar todo</h1>
+        </Modal>
+        {/* Modal para crear ToDo */}
+
         <Footer />
       </div>
     </>
