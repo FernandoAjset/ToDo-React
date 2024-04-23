@@ -1,10 +1,11 @@
-import React, { createContext, useState, useRef,useEffect } from "react";
+import React, { createContext, useState, useRef, useEffect } from "react";
 import { useLocalStorage } from "../hooks/local-storage-hook";
 
 const TodoContext = createContext();
 
 function TodoProvider({ children }) {
   const [searchedTodos, setSearchedTodos] = React.useState([]);
+  const [openModal, setOpenModal] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const {
     item: todos,
@@ -50,7 +51,6 @@ function TodoProvider({ children }) {
     }, 500);
   };
 
-
   useEffect(() => {
     setSearchedTodos(todos);
   }, [todos]);
@@ -67,6 +67,8 @@ function TodoProvider({ children }) {
         filterTodos,
         completeTodo: completeTodoFunction,
         deleteTodo: onDeleteTodoFunction,
+        openModal,
+        setOpenModal,
         addTodo: (text) => {
           const newTodos = [...todos];
           newTodos.push({

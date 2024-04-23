@@ -8,10 +8,16 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodosError } from "./components/TodosError";
 import { TodosLoading } from "./components/TodosLoading";
 import { TodoContext } from "./contexts/TodoContext";
+import { Modal } from "./components/Modal";
 
 const AppUI = () => {
-  const { loading, error, searchedTodos, searchValue } =
-    useContext(TodoContext);
+  const {
+    loading,
+    error,
+    searchedTodos,
+    searchValue,
+    openModal,
+  } = useContext(TodoContext);
 
   return (
     <>
@@ -58,7 +64,11 @@ const AppUI = () => {
             </div>
           </div>
         </div>
-
+        {openModal && (
+          <Modal>
+            <h1 className="text-white">Agregar todo</h1>
+          </Modal>
+        )}
         <Footer />
       </div>
     </>

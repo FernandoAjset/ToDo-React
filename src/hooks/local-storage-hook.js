@@ -9,7 +9,6 @@ export function useLocalStorage(itemName, initialValue) {
   useEffect(() => {
     setTimeout(() => {
       try {
-        console.log("todos");
         const localStorageItem = localStorage.getItem(itemName);
 
         let parsedItem;
